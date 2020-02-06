@@ -1,0 +1,54 @@
+1. Install the required packages:
+=================================
+    *   Install Ncurses Library : sudo apt-get install libncurses5-dev libncursesw5-dev
+    *   Install Lzop : sudo apt-get install lzop   
+    *   Install cross compiler for arm :sudo apt-get install gcc-arm-linux-gnueabihf
+    ----update----
+        sudo apt-get update
+    *   Install dependence for build kernel
+        sudo apt-get install gawk wget git diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm picocom ncurses-dev lzop gcc-arm-linux-gnueabihf
+2. Get the kernel sources:
+=================================
+    mkdir udoo-dev
+    cd udoo-dev
+    git clone https://github.com/UDOOboard/linux_kernel
+    cd linux_kernel
+3. Load the default kernel configuration:
+=================================
+    *ARCH=arm make udoo_quad_dual_defconfig
+    sau khi make se sinh file .config file nay se cho he thong biet driver nao la build-in va driver nao la loadable module.
+    * kernel configuration:(optional)
+            ARCH=arm make menuconfig
+    *Compile sources:
+    ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make zImage -j8 (thong so -j8 la so luong phu thuoc vao PC)
+
+    sau khi build se dc ket qua sau:
+         Kernel: arch/arm/boot/Image is ready
+        LZO     arch/arm/boot/compressed/piggy.lzo
+        CC      arch/arm/boot/compressed/decompress.o
+        CC      arch/arm/boot/compressed/string.o
+        SHIPPED arch/arm/boot/compressed/hyp-stub.S
+        SHIPPED arch/arm/boot/compressed/lib1funcs.S
+        SHIPPED arch/arm/boot/compressed/ashldi3.S
+        SHIPPED arch/arm/boot/compressed/bswapsdi2.S
+        AS      arch/arm/boot/compressed/hyp-stub.o
+        AS      arch/arm/boot/compressed/lib1funcs.o
+        AS      arch/arm/boot/compressed/ashldi3.o
+        AS      arch/arm/boot/compressed/bswapsdi2.o
+        AS      arch/arm/boot/compressed/piggy.lzo.o
+        LD      arch/arm/boot/compressed/vmlinux
+        OBJCOPY arch/arm/boot/zImage
+        Kernel: arch/arm/boot/zImage is ready
+
+    *Compile Device Tree
+        ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make dtbs -j8
+    *Compile module
+        ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make modules -j8
+4. Flash zImage file vao SD card.
+    ***dung command lsblk de check cac partition cua sd card***
+    BOOT_PARTITION=/path/to/boot-partition
+ROOT_PARTITION=/path/to/root-partition
+
+cp arch/arm/boot/zImage $BOOT_PARTITION
+cp arch/arm/boot/dts/*.dtb $BOOT_PARTITION/dts
+ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make firmware_install modules_install INSTALL_MOD_PATH=$ROOT_PARTITION
