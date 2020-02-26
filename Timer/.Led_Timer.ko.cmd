@@ -1,0 +1,1 @@
+cmd_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/pdnguyen/Documents/udoo-dev/linux_kernel/scripts/module-common.lds --build-id  -o /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.ko /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o

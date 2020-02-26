@@ -1,8 +1,8 @@
-cmd_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/.char_gpio_dev.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi -Iinclude/generated/uapi -include /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -std=gnu89 -O2 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(char_gpio_dev)"  -D"KBUILD_MODNAME=KBUILD_STR(char_gpio_dev)" -c -o /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/.tmp_char_gpio_dev.o /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.c
+cmd_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/pdnguyen/Documents/udoo-dev/DD/Timer/.Led_Timer.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi -Iinclude/generated/uapi -include /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -std=gnu89 -O2 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(Led_Timer)"  -D"KBUILD_MODNAME=KBUILD_STR(Led_Timer)" -c -o /home/pdnguyen/Documents/udoo-dev/DD/Timer/.tmp_Led_Timer.o /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.c
 
-source_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.c
+source_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o := /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.c
 
-deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := \
+deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o := \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \
@@ -566,7 +566,20 @@ deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := 
     $(wildcard include/config/xen.h) \
     $(wildcard include/config/xen/dom0.h) \
     $(wildcard include/config/xen/pvh.h) \
+  include/linux/slab.h \
+    $(wildcard include/config/slab/debug.h) \
+    $(wildcard include/config/kmemcheck.h) \
+    $(wildcard include/config/failslab.h) \
+    $(wildcard include/config/slob.h) \
+    $(wildcard include/config/slab.h) \
+    $(wildcard include/config/slub.h) \
+    $(wildcard include/config/debug/slab.h) \
+  include/linux/kmemleak.h \
+    $(wildcard include/config/debug/kmemleak.h) \
+  include/linux/slub_def.h \
+    $(wildcard include/config/slub/stats.h) \
+    $(wildcard include/config/memcg/kmem.h) \
 
-/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o: $(deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o)
+/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o: $(deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o)
 
-$(deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o):
+$(deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.o):

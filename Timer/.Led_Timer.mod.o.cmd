@@ -1,8 +1,9 @@
-cmd_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/.char_gpio_dev.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi -Iinclude/generated/uapi -include /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -std=gnu89 -O2 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(char_gpio_dev)"  -D"KBUILD_MODNAME=KBUILD_STR(char_gpio_dev)" -c -o /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/.tmp_char_gpio_dev.o /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.c
+cmd_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/pdnguyen/Documents/udoo-dev/DD/Timer/.Led_Timer.mod.o.d  -nostdinc -isystem /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi -Iinclude/generated/uapi -include /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -std=gnu89 -O2 -fno-dwarf2-cfi-asm -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -DCC_HAVE_ASM_GOTO  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(Led_Timer.mod)"  -D"KBUILD_MODNAME=KBUILD_STR(Led_Timer)" -DMODULE  -c -o /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.c
 
-source_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := /home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.c
+source_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o := /home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.c
 
-deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := \
+deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o := \
+    $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
     $(wildcard include/config/modules.h) \
@@ -15,7 +16,6 @@ deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := 
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
-    $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
     $(wildcard include/config/debug/set/module/ronx.h) \
   include/linux/list.h \
@@ -419,154 +419,9 @@ deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o := 
     $(wildcard include/config/have/mod/arch/specific.h) \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
-  include/linux/fs.h \
-    $(wildcard include/config/fs/posix/acl.h) \
-    $(wildcard include/config/security.h) \
-    $(wildcard include/config/quota.h) \
-    $(wildcard include/config/fsnotify.h) \
-    $(wildcard include/config/ima.h) \
-    $(wildcard include/config/epoll.h) \
-    $(wildcard include/config/debug/writecount.h) \
-    $(wildcard include/config/file/locking.h) \
-    $(wildcard include/config/auditsyscall.h) \
-    $(wildcard include/config/block.h) \
-    $(wildcard include/config/fs/xip.h) \
-    $(wildcard include/config/migration.h) \
-  include/linux/kdev_t.h \
-  include/uapi/linux/kdev_t.h \
-  include/linux/dcache.h \
-  include/linux/rculist.h \
-  include/linux/rculist_bl.h \
-  include/linux/list_bl.h \
-  include/linux/bit_spinlock.h \
-  include/linux/lockref.h \
-    $(wildcard include/config/arch/use/cmpxchg/lockref.h) \
-  include/linux/path.h \
-  include/linux/list_lru.h \
-  include/linux/radix-tree.h \
-  include/linux/pid.h \
-  include/linux/capability.h \
-  include/uapi/linux/capability.h \
-  include/linux/semaphore.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi/linux/fiemap.h \
-  include/linux/shrinker.h \
-  include/linux/migrate_mode.h \
-  include/linux/percpu-rwsem.h \
-  include/linux/blk_types.h \
-    $(wildcard include/config/blk/cgroup.h) \
-    $(wildcard include/config/blk/dev/integrity.h) \
-  include/uapi/linux/fs.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi/linux/limits.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi/linux/ioctl.h \
-  arch/arm/include/generated/asm/ioctl.h \
-  include/asm-generic/ioctl.h \
-  include/uapi/asm-generic/ioctl.h \
-  include/linux/quota.h \
-    $(wildcard include/config/quota/netlink/interface.h) \
-  include/linux/percpu_counter.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi/linux/dqblk_xfs.h \
-  include/linux/dqblk_v1.h \
-  include/linux/dqblk_v2.h \
-  include/linux/dqblk_qtree.h \
-  include/linux/projid.h \
-  include/uapi/linux/quota.h \
-  include/linux/nfs_fs_i.h \
-  include/linux/fcntl.h \
-  include/uapi/linux/fcntl.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/uapi/asm/fcntl.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/include/uapi/asm-generic/fcntl.h \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/acpi.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
-  include/linux/ioport.h \
-  include/linux/klist.h \
-  include/linux/pinctrl/devinfo.h \
-    $(wildcard include/config/pm.h) \
-  include/linux/pinctrl/consumer.h \
-  include/linux/seq_file.h \
-  include/linux/pinctrl/pinctrl-state.h \
-  include/linux/pm.h \
-    $(wildcard include/config/vt/console/sleep.h) \
-    $(wildcard include/config/pm/runtime.h) \
-    $(wildcard include/config/pm/clk.h) \
-    $(wildcard include/config/pm/generic/domains.h) \
-  include/linux/ratelimit.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/device.h \
-    $(wildcard include/config/dmabounce.h) \
-    $(wildcard include/config/iommu/api.h) \
-    $(wildcard include/config/arm/dma/use/iommu.h) \
-    $(wildcard include/config/arch/omap.h) \
-  include/linux/pm_wakeup.h \
-  include/linux/gpio.h \
-    $(wildcard include/config/gpiolib.h) \
-    $(wildcard include/config/arch/have/custom/gpio/h.h) \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/gpio.h \
-    $(wildcard include/config/arch/nr/gpio.h) \
-    $(wildcard include/config/need/mach/gpio/h.h) \
-  include/asm-generic/gpio.h \
-  include/linux/of.h \
-    $(wildcard include/config/sparc.h) \
-    $(wildcard include/config/of/dynamic.h) \
-    $(wildcard include/config/of.h) \
-    $(wildcard include/config/attach/node.h) \
-    $(wildcard include/config/detach/node.h) \
-    $(wildcard include/config/add/property.h) \
-    $(wildcard include/config/remove/property.h) \
-    $(wildcard include/config/update/property.h) \
-    $(wildcard include/config/proc/fs.h) \
-    $(wildcard include/config/proc/devicetree.h) \
-  include/linux/mod_devicetable.h \
-  include/linux/uuid.h \
-  include/uapi/linux/uuid.h \
-  include/linux/pinctrl/pinctrl.h \
-  include/linux/gpio/driver.h \
-    $(wildcard include/config/of/gpio.h) \
-  include/linux/gpio/consumer.h \
-    $(wildcard include/config/gpio/sysfs.h) \
-  include/linux/cdev.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/uaccess.h \
-  include/linux/interrupt.h \
-    $(wildcard include/config/irq/forced/threading.h) \
-    $(wildcard include/config/generic/irq/probe.h) \
-  include/linux/irqreturn.h \
-  include/linux/irqnr.h \
-  include/uapi/linux/irqnr.h \
-  include/linux/hardirq.h \
-  include/linux/ftrace_irq.h \
-    $(wildcard include/config/ftrace/nmi/enter.h) \
-  include/linux/vtime.h \
-    $(wildcard include/config/virt/cpu/accounting/native.h) \
-    $(wildcard include/config/virt/cpu/accounting/gen.h) \
-    $(wildcard include/config/virt/cpu/accounting.h) \
-    $(wildcard include/config/irq/time/accounting.h) \
-  include/linux/context_tracking_state.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/hardirq.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/irq.h \
-    $(wildcard include/config/sparse/irq.h) \
-    $(wildcard include/config/multi/irq/handler.h) \
-  include/linux/irq_cpustat.h \
-  include/linux/hrtimer.h \
-    $(wildcard include/config/high/res/timers.h) \
-    $(wildcard include/config/timerfd.h) \
-  include/linux/timerqueue.h \
-  /home/pdnguyen/Documents/udoo-dev/linux_kernel/arch/arm/include/asm/io.h \
-    $(wildcard include/config/need/mach/io/h.h) \
-    $(wildcard include/config/pci.h) \
-    $(wildcard include/config/pcmcia/soc/common.h) \
-    $(wildcard include/config/isa.h) \
-    $(wildcard include/config/pccard.h) \
-  include/asm-generic/pci_iomap.h \
-    $(wildcard include/config/no/generic/pci/ioport/map.h) \
-    $(wildcard include/config/generic/pci/iomap.h) \
-  include/xen/xen.h \
-    $(wildcard include/config/xen.h) \
-    $(wildcard include/config/xen/dom0.h) \
-    $(wildcard include/config/xen/pvh.h) \
+  include/linux/vermagic.h \
+  include/generated/utsrelease.h \
 
-/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o: $(deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o)
+/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o: $(deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o)
 
-$(deps_/home/pdnguyen/Documents/udoo-dev/DD/Device-Driver/gpio/char_gpio_dev.o):
+$(deps_/home/pdnguyen/Documents/udoo-dev/DD/Timer/Led_Timer.mod.o):

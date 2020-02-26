@@ -1,0 +1,1 @@
+cmd_/home/pdnguyen/Documents/udoo-dev/DD/Timer/timer_add.ko := arm-linux-gnueabihf-ld -EL -r  -T /home/pdnguyen/Documents/udoo-dev/linux_kernel/scripts/module-common.lds --build-id  -o /home/pdnguyen/Documents/udoo-dev/DD/Timer/timer_add.ko /home/pdnguyen/Documents/udoo-dev/DD/Timer/timer_add.o /home/pdnguyen/Documents/udoo-dev/DD/Timer/timer_add.mod.o
