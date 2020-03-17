@@ -1,0 +1,137 @@
+I .Install Cross Tool-chain Qt5 for rasberry pi3
+    +++ PC: ubuntu 16.04 
+    +++ Raspberry: rasbian buster newest
+
+=================Set up dependency for Pi======================
+1. Enable SSH 
+2. Change password root 
+    - sudo vim /etc/ssh/sshd_config
+Find the line PermitRootLogin and comment out
+
+
+PermitRootLogin yes
+
+    - sudo reboot
+    sau đó update rpi 
+    - sudo rpi-update
+3.Login as a root then modify sources.list uncomment DEB_SRC line in file source.list
+
+    - vim etc/apt/sources.list
+then 
+    - sudo apt-get update
+    - sudo apt-get build-dep qt4-x11
+sudo apt-get build-dep libqt5gui5
+sudo apt-get install libudev-dev libinput-dev libts-dev libxcb-xinerama0-dev libxcb-xinerama0
+4. Prepare target folder on Raspberry
+
+    - sudo mkdir /usr/local/qt5pi
+    - sudo chown root:root /usr/local/qt5pi
+
+5. Chỉnh sửa và link các license trong thư mục /usr/lib và /opt/vc để chạy script link trên PC ở bước tiếp theo
+
+    - mv sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0 sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0_backup
+    - ln -s sysroot/opt/vc/lib/libEGL.so sysroot/usr/lib/arm-linux-gnueabihf/libEGL.so.1.0.0
+    - mv sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0 sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0_backup
+    - ln -s sysroot/opt/vc/lib/libGLESv2.so sysroot/usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.0.0
+    - ln -s sysroot/opt/vc/lib/libEGL.so sysroot/opt/vc/lib/libEGL.so.1
+    - ln -s sysroot/opt/vc/lib/libGLESv2.so sysroot/opt/vc/lib/libGLESv2.so.2
+=================================================================
+
+==================Set up Env on PC===============================
+1.
+    - mkdir ~/raspi
+    - cd ~/raspi
+    - git clone https://github.com/raspberrypi/tools
+
+2. Create and configure a sysroot
+    - mkdir sysroot sysroot/usr sysroot/opt
+Chạy command rsync để đồng bộ các thư mục trên PC và Raspi.
+    - rsync -avz pi@raspberrypi_ip:/lib sysroot
+    - rsync -avz pi@raspberrypi_ip:/usr/include sysroot/usr
+    - rsync -avz pi@raspberrypi_ip:/usr/lib sysroot/usr
+    - rsync -avz pi@raspberrypi_ip:/opt/vc sysroot/opt
+    ----------------------------------------------------
+Download script poky
+    - wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py
+    - chmod +x sysroot-relativelinks.py
+    ./sysroot-relativelinks.py sysroot
+
+3. Download Qt 
+    dùng bản Qt5.12.5
+    - wget http://download.qt.io/official_releases/qt/5.12/5.12.5/single/ qt-everywhere-src-5.12.5.tar.xz
+    - tar xvf  qt-everywhere-src-5.12.5.tar.xz
+    - cd  qt-everywhere-src-5.12.5
+
+4. Configure Qt for cross compilation:
+    -     ./configure -release -opengl es2 -device linux-rasp-pi-g++ -device-option CROSS_COMPILE=~/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf- -sysroot ~/raspi/sysroot -opensource -confirm-license -skip qtwayland -skip qtlocation -skip qtscript -make libs -prefix /usr/local/qt5pi -extprefix ~/raspi/qt5pi -hostprefix ~/raspi/qt5 -no-use-gold-linker -v -no-gbm
+
+    Kết quả như sau là ok
+
+    Build options:
+    ......
+    QPA backends:
+      ......
+      EGLFS .................................. yes
+      EGLFS details:
+        ......
+        EGLFS Raspberry Pi ................... yes
+        ......    
+    Sau đó run command make va make install
+
+Nếu tất cả Ok thực hiện sync xuống thư muc qt5pi dưới raspberrypi
+    - rsync -avz qt5pi pi@raspberrypi_ip:/usr/local/qt5pi
+
+
+
+II. add GENIVI -- dlt-deamon phục vụ log and trace interface canbus
+Đầu tiên thực hiện cài đặt dlt-deamon cho rasp(các bước sau thực hiện trên Pi)
+** Down load src dlt-deamon
+    - git clone https://github.com/GENIVI/dlt-daemon
+** Install các package dependency 
+    - sudo apt-get install cmake zlib1g-dev libdbus-glib-1-dev
+    - mkir build
+    - cd build
+    thực hiện thay đổi các biến config trong file CmakeList.txt theo như link dưới
+        https://github.com/GENIVI/dlt-daemon#configuration
+    - cmake ..
+    - make 
+    - optional: sudo make install
+    - optional: sudo ldconfig
+
+
+Tiếp theo ta sẽ đồng bộ các thư mục dưới raspi với PC:
+    +++ Trên Raspi ta sẽ copy các file:
+            + libdlt.so, libdlt.so.2, libdlt.so.2.18.4
+            + và thư mục pkgconfig
+        vào thư mục /usr/lib
+
+        - cd /usr/local/lib
+        - sudo cp libdlt.* /usr/lib
+        - sudo cp pkgconfig /usr/lib
+    +++  Tiếp tục copy thư mục dlt trong đường dẫn /usr/local/include/dlt 
+    sang thư mục /usr/include của rasp:
+        - cd /usr/local/include
+        - sudo cp -r dlt /usr/include
+
+
+sau đó thưc hiện đồng bộ với PC:(chạy trên PC)
+    rsync -avz pi@raspberrypi_ip:/usr/include sysroot/usr
+    rsync -avz pi@raspberrypi_ip:/usr/lib sysroot/usr
+
+Chạy lại script để link các file license
+    ./sysroot-relativelinks.py sysroot
+
+Cài Qt Creator trên PC để dev app như bình thường 
+Setup deploy ===> raspberry như file Setup-deploy-app-Qt-embedded-device.odt
+Hoặc có thể run command ~/raspi/qt5/bin/qmake để build exe file sau đó scp xuống raspberry chạy như bình thường.
+
+
+
+*****DONE.*********
+link tham khảo:
+https://mechatronicsblog.com/cross-compile-and-deploy-qt-5-12-for-raspberry-pi/
+http://ulasdikme.com/projects/raspberry/Qt_for_raspberrypi.php
+https://github.com/GENIVI/dlt-daemon
+
+
+

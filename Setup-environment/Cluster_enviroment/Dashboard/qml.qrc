@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/high_beam.png</file>
+        <file>images/arrow.png</file>
+        <file>images/dashboard_panel.png</file>
+        <file>images/rpm_needle.png</file>
+        <file>fonts/digital-7 (italic).ttf</file>
+        <file>images/speed_needle.png</file>
+        <file>images/leftgauge.png</file>
+        <file>images/rightgauge.png</file>
+        <file>images/low_beam.png</file>
+        <file>images/lane/Left.png</file>
+        <file>images/lane/Nolane.png</file>
+        <file>images/lane/Right.png</file>
+        <file>images/lane/YesLane.png</file>
+        <file>images/Cruise_Control.png</file>
+        <file>images/fog_light.png</file>
+        <file>images/Tmalogo.JPG</file>
+    </qresource>
+</RCC>
