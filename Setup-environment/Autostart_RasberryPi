@@ -1,0 +1,29 @@
+Create autorun-file:
+
+2.1 LXTerminal: cd /home/pi/.config/autostart
+
+2.2 LXTerminal: sudo nano pythonscript.desktop
+
+2.3 pythonscript.desktop:
+
+[Desktop Entry]
+Version=1.0
+Name=YourName
+Comment=Your comment
+Exec=/home/pi/pythonscript.py -nograb #-nograb for comboBox on touch Screen
+Icon=/usr/share/pixmaps/python.xpm
+Path=/home/pi/
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Utility;Application;
+2.4 Ctrl+O, Ctrl+X, sudo reboot
+
+Good to know:
+
+It is important, that you can't use just any path to your script. The script has to be directly in the /home/pi/ directory, so you would use Exec=/home/pi/pythonscript.py in the autorun-file (.desktop). I also learned, that if your script loads for example an image with PIL, this image has to be somewhere else, maybe on your desktop, because it can't be opened out of the /home/pi/ directory.
+
+If your GUI has a comboBox and you are using a touch screen, the comboBox might make your whole GUI unuseable after you touched it. Using Exec=/home/pi/pythonscript.py -nograb solves this problem.
+
+StartupNotify=true is important for starting GUI scripts.
+
